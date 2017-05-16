@@ -4,68 +4,38 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-reactive-var
-less
-iron:router
-fastclick
-tap:i18n
-3stack:bignumber
-zimme:iron-router-active
-yasinuslu:blaze-meta
-numeral:numeral
-ethereum:web3
-ethereum:accounts@0.3.5
-ethereum:elements
+reactive-var@1.0.11      # a general-purpose reactive datatype for use with tracker
+fastclick@1.0.13         # FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a click event on mobile browsers.
+universe:i18n     # Universe internationalisation package
+ethereum:accounts@0.4.0
+seedbloom:elements
 ethereum:tools
 ethereum:blocks
-frozeman:persistent-minimongo
 frozeman:storage
 frozeman:template-var
 frozeman:reactive-timer
-mrt:moment
-dburles:collection-helpers
+frozeman:persistent-minimongo
 matb33:collection-hooks
-raix:handlebar-helpers
 chuangbo:cookie
-markdown
-standard-minifiers
-meteor-base
-mobile-experience
-mongo
-blaze-html-templates
-session
-jquery
-tracker
-logging
-reload
-random
-ejson
-spacebars
-check
-silentcicero:solc
+random@1.0.10
+ejson@1.0.13
+check@1.2.5
 mike:mocha
-
-
-
-# Meteor packages used by this project, one per line.
-# Check this file (and the other files in this directory) into your repository.
-#
-# 'meteor add' and 'meteor remove' will edit this file for you,
-# but you can also edit it by hand.
 
 meteor-base@1.0.4             # Packages every Meteor app needs to have
 mobile-experience@1.0.4       # Packages for a great mobile UX
-mongo@1.1.12                   # The database Meteor supports right now
+mongo@1.1.17                  # The database Meteor supports right now
 blaze-html-templates@1.0.4    # Compile .html files into Meteor Blaze views
-session@1.1.6                 # Client-side reactive dictionary for your app
-jquery@1.11.9                  # Helpful client-side library
-tracker@1.1.0                 # Meteor's client-side reactive programming library
+session@1.1.7                 # Client-side reactive dictionary for your app
+jquery@1.11.10                 # Helpful client-side library
+tracker@1.1.3                 # Meteor's client-side reactive programming library
 
-standard-minifier-js@1.2.0    # JS minifier run for production mode
-es5-shim@4.6.14                # ECMAScript 5 compatibility for older browsers.
-ecmascript@0.5.8              # Enable ECMAScript2015+ syntax in app code
+standard-minifier-js    # JS minifier run for production mode
+es5-shim@4.6.15               # ECMAScript 5 compatibility for older browsers.
+ecmascript@0.7.3              # Enable ECMAScript2015+ syntax in app code
 
-accounts-password@1.3.0       # Account package
+
+accounts-password@1.3.6 # Account package
 std:accounts-ui         # Accounts UI for React
 alanning:roles          # Roles
 
@@ -79,11 +49,7 @@ kadira:flow-router    # For use without ssr
 
 semantic:ui             # Styling with semantic and less
 juliancwirko:postcss
-less@2.7.5
-
-# prototyping, to be removed
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+fourseven:scss
 
 # optional, useful
 # email                 # Send emails with meteor
@@ -94,4 +60,5 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 # matb33:collection-hooks # Collection lifecycle hooks
 # astronomerio:core     # Analytics integration through astronomer.io
 # tmeasday:publish-counts # Count documents in publications
-shell-server@0.2.1
+shell-server@0.2.3
+# standard-minifier-css
