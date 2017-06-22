@@ -1,12 +1,8 @@
 import React from "react";
 
-const Header = function(props) {
+const Header = ()=> {
   return (
-    <div className="ui large borderless menu">
-      <div className="ui container">
-        <a href={FlowRouter.path("index")} className="item">Superlumen</a>
-      </div>
-    </div>
+    <h1 className="mw5 mw7-ns center pa3 ph5-ns"><a href={FlowRouter.path("index")} className="item">Seedbloom — Ethereum React boilerplate stack</a></h1>
   );
 };
 

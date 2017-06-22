@@ -1,12 +1,14 @@
 import _ from "lodash";
-
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import createLogger from "redux-logger";
+import createSagaMiddleware from "redux-saga";
+import ethBalanceSaga from "./components/EthBalance/sagas";
 // We don't always need redux persistence
-// import { persistStore, autoRehydrate } from 'redux-persist'
 
+// import { persistStore, autoRehydrate } from 'redux-persist'
 import rootReducer from "./root.reducer";
+
 
 import config from "/imports/config";
 
@@ -21,7 +23,11 @@ if (_.get(config, "isDev", false)) {
   middlewares.push(logger);
 }
 
-const Store = createStore(
+
+
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
   rootReducer,
   {},
   compose(
@@ -36,6 +42,7 @@ const Store = createStore(
   }),
   */
     applyMiddleware(...middlewares),
+    applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
@@ -49,4 +56,6 @@ const Store = createStore(
 //   //blacklist,
 // })
 
-export default Store;
+sagaMiddleware.run(ethBalanceSaga);
+
+export default store;

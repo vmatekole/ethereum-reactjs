@@ -1,0 +1,43 @@
+type EthBlock {
+    difficulty: String!
+    extraData: String
+    gasLimit: String!
+    gasUsed: Int!
+    hash: String
+    logsBloom: String!
+    miner: String
+    mixHash: String!
+    nonce: String
+    number: String!
+    parentHash: String!
+    receiptsRoot: String!
+    sha3Uncles: String!
+    size: Int!
+    stateRoot: String!
+    timestamp: String
+    totalDifficulty: String!
+    transactions: [String]!
+    transactionsRoot: String!
+    uncles: [String]!
+}
+
+type EthAccount {
+    address: String!
+    balance: Int!
+}
+
+type EthNetworkStatus {
+    listening: String!
+    peerCount: Int!
+    gasPrice: String!
+    blockNumber: String!
+    earliestBlock: EthBlock!
+    latestBlock: EthBlock!
+    pendingBlock: EthBlock!
+}
+
+type Query {
+    ethNetworkStatus: EthNetworkStatus
+    ethAccount(address: String!): EthAccount
+    ethBlock(blockHashOrBlockNumber: String!, returnTransactionObjects: Boolean): EthBlock
+}

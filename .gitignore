@@ -1,4 +1,4 @@
+**/**/data
 data/
-docker-compose.yml
 **/.idea
 app/node_modules

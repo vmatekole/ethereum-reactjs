@@ -1,23 +1,40 @@
 import React from "react";
-import { Provider } from "react-redux";
-
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient, createNetworkInterface } from 'react-apollo';
+import { Component } from 'react';
 import store from "/imports/store";
+
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: '/graphql',
+  }),
+});
 
 import Header from "./components/Header/Header";
 
-const App = function(props) {
-  const { children } = props;
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <Provider store={store}>
-      <div>
-        <Header />
-        <div className="ui container">
-          {children}
+  render() {
+    const {children} = this.props;
+    return (
+      <ApolloProvider store={store} client={client}>
+        <div className="app">
+          <div className="mw5 mw8-ns center bg-light-gray pa3 ph5-ns">
+            <div className="center"><Header /></div>
+            <div className="">
+              <div className="">
+                {children}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </Provider>
-  );
-};
+      </ApolloProvider>
+    );
+  }
+}
+;
 
 export default App;

@@ -1,0 +1,40 @@
+query GetEthNetworkStatus {
+    ethNetworkStatus {
+        listening
+        peerCount
+        gasPrice
+        blockNumber
+        earliestBlock {
+            ...Block
+        }
+        latestBlock {
+            ...Block
+        }
+        pendingBlock {
+            ...Block
+        }
+    }
+}
+
+fragment Block on EthBlock {
+    difficulty
+    extraData
+    gasLimit
+    gasUsed
+    hash
+    logsBloom
+    miner
+    mixHash
+    nonce
+    number
+    parentHash
+    receiptsRoot
+    sha3Uncles
+    size
+    stateRoot
+    timestamp
+    totalDifficulty
+    transactions
+    transactionsRoot
+    uncles
+}
