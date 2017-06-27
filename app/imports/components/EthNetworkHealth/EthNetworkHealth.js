@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Component} from 'react';
 import Store from '../../store';
-import  ethNetworkStatusQuery from '/imports/graphql/resolvers/ethQueries';
+import  ethNetworkStatusQuery from '/imports/graphql/queries/ethQueries';
 import {updateNetworkStatus} from './EthNetworkHealth.actions';
 import {getw3Status} from './EthNetworkHealth.selectors';
 import {graphql, compose} from 'react-apollo';

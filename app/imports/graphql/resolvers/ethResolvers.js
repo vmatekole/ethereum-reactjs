@@ -11,7 +11,6 @@ if (!web3.currentProvider) {
   }
 }
 
-
 const resolvers = {
   Query: {
     ethAccount: (address) => {
@@ -32,6 +31,6 @@ const resolvers = {
       }
     }
   }
-}
+};
 
 export default resolvers;

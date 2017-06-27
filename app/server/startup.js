@@ -10,8 +10,8 @@ import { typeDefs, resolvers } from '/imports/graphql/index';
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers
 });
 createApolloServer({
-  schema,
+  schema
 });

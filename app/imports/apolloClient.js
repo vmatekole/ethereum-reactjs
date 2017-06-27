@@ -1,6 +1,10 @@
 // app/imports/apolloClient.js
 import { ApolloClient, createNetworkInterface } from 'react-apollo';
 
-const client = new ApolloClient();
+const client = new ApolloClient({
+  networkInterface: createNetworkInterface({
+    uri: '/graphql',
+  }),
+});
 
 export default client;
