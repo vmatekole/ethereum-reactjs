@@ -14,7 +14,7 @@ const EthAccount = ({account}) => {
       <td>
         <input type="text" value="" className="web3_address"/>
       </td>
-      <td>{EthHelpers.fromWei(account.balance,'ether')} ether</td>
+      <td>{EthHelpers.fromWei(account.balance,'ether').toString()} ether</td>
     </tr>
   )
 }
@@ -30,7 +30,7 @@ class EthAccountList extends Component {
       return;
     return (
       accounts.map( (acc) => {
-        return <EthAccount account={acc} />
+        return <EthAccount key={acc.address} account={acc} />
       })
     );
   }

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import  { handleActions } from 'redux-actions';
-import * as ActionTypes from "./EthBalance.actions";
+import * as ActionTypes from "./ethBalance.actions";
 
 function ApiEthBalance(ethbase) {
   let ethBalance = web3.eth.getBalance(ethbase)

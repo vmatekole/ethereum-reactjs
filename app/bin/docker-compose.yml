@@ -8,3 +8,36 @@ services:
       - "./data/mongo:/data/db"
     ports:
       - "27017:27017"
+  ipfs:
+    container_name: ipfs
+    image: ipfs/go-ipfs:v0.4.9
+    volumes:
+      - ./data/ipfs/export:/export
+      - ./data/ipfs/data:/data
+
+    ports:
+      - 8080:8080
+      - 4001:4001
+      - 5001:5001
+  mongo-bigchaindb:
+    container_name: mongo-bigchaindb
+    image: mongo:3.4.2
+    volumes:
+      - "./data/mongo-bigchaindb/db:/data/db"
+      - "./data/mongo-bigchaindb/configdb:/data/configdb"
+      - "./config/mongod.yml:/etc/mongod.yml"
+    expose:
+      - 29017
+    command: --replSet=bigchain-rs --config /etc/mongod.yml
+  bigchaindb:
+    image: bigchaindb/bigchaindb:1.0.0
+    container_name: bigchaindb
+    links:
+      - mongo-bigchaindb:mongo
+    volumes:
+      - ./data/bigchaindb:/data
+    ports:
+      - 9984:9984
+      - 9985:9985
+    command: start
+

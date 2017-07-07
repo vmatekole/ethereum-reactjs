@@ -1,7 +1,7 @@
 import { take, put, fork } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import * as actions from './EthBalance.actions';
-import { getEthbase } from './EthBalance.selectors';
+import * as actions from './ethBalance.actions';
+import { getEthbase } from './ethBalance.selectors';
 import Store from '../../store';
 
 function* fetchBalance(ethbase) {

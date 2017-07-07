@@ -6,10 +6,6 @@
 
 reactive-var@1.0.11      # a general-purpose reactive datatype for use with tracker
 universe:i18n     # Universe internationalisation package
-ethereum:accounts@0.4.0
-seedbloom:elements
-ethereum:tools
-ethereum:blocks
 frozeman:storage
 frozeman:reactive-timer
 frozeman:persistent-minimongo
@@ -59,5 +55,7 @@ seedbloom:highlight
 dynamic-import
 kadira:dochead
 
-apollo  # Apoloo/GraphQL
+apollo  # Apollo/GraphQL
 swydo:graphql
+ethereum:accounts
+# seedbloom:apollo-accounts

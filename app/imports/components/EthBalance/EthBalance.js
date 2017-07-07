@@ -2,10 +2,9 @@ import  React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import Store  from '../../store';
 import config from '/imports/config';
-import * as actions from './EthBalance.actions';
-import { getEthBalance, getEthbase } from './EthBalance.selectors';
+import * as actions from './ethBalance.actions';
+import { getEthBalance, getEthbase } from './ethBalance.selectors';
 
 class EthBalance extends Component {
   constructor(props) {
@@ -14,7 +13,8 @@ class EthBalance extends Component {
 
   componentDidMount() {
     if (_.get(config, "isDev", false)) {
-      Store.dispatch(actions.setEthbase('0xb0d408fad13260e7d5fd8b7f92298bf38bbfc849'));
+      this.props.setEthbase();
+      // Store.dispatch(actions.setEthbase('0xb0d408fad13260e7d5fd8b7f92298bf38bbfc849'));
     }
   }
 
