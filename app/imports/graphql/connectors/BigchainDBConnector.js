@@ -58,7 +58,7 @@ class BigChainDBConnector {
           metadata,
           // A transaction needs an output
           outputs,
-          0
+          amount
         );
       },
       async createAsset(txSigned) {

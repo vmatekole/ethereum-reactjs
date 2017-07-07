@@ -11,13 +11,15 @@ class MemberRegistry {
     return result.assets && result.assets.length > 0
   }
   async add(org) {
-    // Chieck if org already eixists
+    // Check if org already exists
     if ((await this.exists(this.conn.asset().searchAssets(org.address)))) {
       throw `#V456 — Org already exists ${org.name}, ${org.address}`;
       return;
     }
+
     const {privateKey: privKey, publicKey: pubKey} = this.conn.appKeypair;
     const issuersAndRecipients = [pubKey];
+
     // Create unsigned transaction. Currently we always issue assets to the application itself.
     const tx = this.conn.asset().makeCreateTransaction(
       org,
@@ -34,6 +36,7 @@ class MemberRegistry {
   async addMember(orgAddress, member) {
     //Check if Member exists
     let results = await this.conn.asset().searchAssets(orgAddress);
+
     if(results && results.length >= 1) {
       asset = results[0];
       results = await this.conn.asset().searchTransactions(asset.id,'CREATE');
@@ -41,18 +44,18 @@ class MemberRegistry {
       throw `#34ff — No organisation found ${orgAddress}`;
       return;
     }
+
     const assetTx = results[0];
-    console.log(`Got asset transaction: ${P(assetTx)}`);
-    const amount = assetTx.outputs[0].amount + 1;
     const {privateKey:privKey, publicKey: pubKey} = this.conn.appKeypair;
-    const issuersAndRecipients = [pubKey];
+
     if(assetTx) {
       const tx = this.conn.asset().makeTransferTransaction(
         assetTx, //An unspent transaction to BigChainDB
         member,
-        issuersAndRecipients,
-        amount
+        [pubKey],
+        0 // Always 0 since we never issue > 1 for a memberRegistry
       );
+
       // Sign the transaction with app private key
       const txSigned = driver.Transaction.signTransaction(tx, privKey);
       // Send off transaction
