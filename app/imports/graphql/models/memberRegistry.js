@@ -12,9 +12,8 @@ class MemberRegistry {
   }
   async add(org) {
     // Chieck if org already eixists
-    if ((await exists(this.conn.asset().searchAssets(org.address)))) {
-      const errMessage = `#V456 — Org already exists ${org.name}, ${org.address}`;
-      throw errMessage;
+    if ((await this.exists(this.conn.asset().searchAssets(org.address)))) {
+      throw `#V456 — Org already exists ${org.name}, ${org.address}`;
       return;
     }
     const {privateKey: privKey, publicKey: pubKey} = this.conn.appKeypair;
@@ -23,7 +22,8 @@ class MemberRegistry {
     const tx = this.conn.asset().makeCreateTransaction(
       org,
       null,
-      issuersAndRecipients, pubKey
+      issuersAndRecipients,
+      pubKey
     );
     // Sign the transaction with private key
     const txSigned = driver.Transaction.signTransaction(tx, privKey);
@@ -44,7 +44,7 @@ class MemberRegistry {
     const assetTx = results[0];
     console.log(`Got asset transaction: ${P(assetTx)}`);
     const amount = assetTx.outputs[0].amount + 1;
-    const {privateKey: privKey, publicKey: pubKey} = this.conn.appKeypair;
+    const {privateKey:privKey, publicKey: pubKey} = this.conn.appKeypair;
     const issuersAndRecipients = [pubKey];
     if(assetTx) {
       const tx = this.conn.asset().makeTransferTransaction(

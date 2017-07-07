@@ -39,7 +39,7 @@ const member1 = {
 const member2 = {
   address: "0x12kjkh",
   name: "Terry"
-}
+}gs
 
 const member3 = {
   address: "0x1678",

@@ -15,7 +15,7 @@ import Web3 from 'web3';
 //BigChainDb
 // Create a new keypair.
 const seed = Buffer.from('12345678910111213141516123456789');
-const seedbloomKeypair = new bigChainDBDriver.Ed25519Keypair();
+const seedbloomKeypair = new bigChainDBDriver.Ed25519Keypair(seed);
 // BigchainDB Settings
 const bigchainDBSettings = {keyPair: seedbloomKeypair, uri: _.get(config, 'bigchainDB.uri')};
 // Web3(Ethereum)
@@ -56,12 +56,12 @@ async function runFixtures() {
   };
   let memberReg = new MemberRegistry(connectors.bigchainDB);
   try {
-    // let tx = await memberReg.add(group);
-    // console.log(tx);
-    let tx = await memberReg.addMember(group.address,member);
+    let tx = await memberReg.add(group);
+    console.log(tx);
+    tx = await memberReg.addMember(group.address,member);
     console.log(tx);
   } catch(err) {
-    log.error(err);
+     log.error(err);
   }
   // const tx = bigChainDBDriver.Transaction.makeCreateTransaction(
   //
