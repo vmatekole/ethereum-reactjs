@@ -2,5 +2,5 @@
 data/
 **/.idea
 app/node_modules
+app/packages
 app/client/css/bourbon/* linguist-vendored
-app/packages/* linguist-vendored
