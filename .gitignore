@@ -2,3 +2,4 @@
 data/
 **/.idea
 app/node_modules
+app/client/css/bourbon/* linguist-vendored
